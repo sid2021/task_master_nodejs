@@ -1,4 +1,4 @@
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://task-master-flask.herokuapp.com/)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://task-master-nodejs.herokuapp.com/)
 
 # Task Master
 

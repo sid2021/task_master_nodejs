@@ -15,16 +15,14 @@ app.use(express.urlencoded({ extended: false }));
 
 app.set("view engine", "ejs");
 
-mongoose.connect(
-  process.env.MONGODB_URI,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  },
-  () => {
-    console.log("Connected to db");
-  }
-);
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+mongoose.connection.on("connected", () => {
+  console.log("Mongoose is connected!!!!");
+});
 
 app.get("/", (req, res) => {
   Todo.find({}, (error, foundTodos) => {
@@ -69,6 +67,10 @@ app.route("/delete/:id").get((req, res) => {
   });
 });
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
 app.listen(PORT, () => {
-  console.log("Server is up and running");
+  console.log("Server is up and running at port: " + PORT);
 });
