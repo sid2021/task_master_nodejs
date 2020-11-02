@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const PORT = process.env.PORT || 8080;
 
 const dotenv = require("dotenv");
 dotenv.config();
@@ -15,17 +16,13 @@ app.use(express.urlencoded({ extended: false }));
 app.set("view engine", "ejs");
 
 mongoose.connect(
-  process.env.DB_URI,
+  process.env.MONGODB_URI,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   },
   () => {
     console.log("Connected to db");
-
-    app.listen(3000, () => {
-      console.log("Server up and running");
-    });
   }
 );
 
@@ -70,4 +67,8 @@ app.route("/delete/:id").get((req, res) => {
     if (error) return res.send(500, error);
     res.redirect("/");
   });
+});
+
+app.listen(PORT, () => {
+  console.log("Server is up and running");
 });

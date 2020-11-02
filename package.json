@@ -4,7 +4,7 @@
   "description": "task_master_nodejs",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
   "author": "sid2021",
   "license": "MIT",
