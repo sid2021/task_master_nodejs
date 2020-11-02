@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+      crossorigin="anonymous"
+    />
+    <title>Task Master</title>
+  </head>
+  <div class="todo-container">
+    <h2>Task Master</h2>
+    <div class="todo">
+      <form action="/" method="POST" class="todo-header">
+        <input
+          type="text"
+          name="content"
+          placeholder="Add a new task"
+          required
+        />
+        <button type="submit"><span class="fas fa-plus"></span></button>
+      </form>
+      <ul class="todo-list">
+        <% todos.forEach(n => { %>
+        <li class="todo-list-item">
+          <div class="todo-list-item-name"><%= n.content %></div>
+          <div class="todo-list-item-date">
+            <%= n.created_on.toLocaleDateString(undefined, { year: 'numeric',
+            month: 'numeric', day: 'numeric'}) %>
+          </div>
+          <a href="/update/<%= n._id %>" class="edit">
+            <span class="fas fa-edit"></span>
+          </a>
+          <a href="/delete/<%= n._id %>" class="remove">
+            <span class="fas fa-times"></span>
+          </a>
+        </li>
+        <% }) %>
+      </ul>
+    </div>
+    <footer><a href="https://github.com/sid2021">by sid2021</a></footer>
+  </div>
+</html>
