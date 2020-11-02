@@ -22,8 +22,8 @@ For your convenience app is also deployed to Heroku.
 ## Installation
 
 ```
-$ git clone https://github.com/sid2021/issue_tracker_nodejs.git
-$ cd issue_tracker_nodejs
+$ git clone https://github.com/sid2021/task_master_nodejs.git
+$ cd task_master_nodejs
 $ npm install
 $ npm start
 ```
